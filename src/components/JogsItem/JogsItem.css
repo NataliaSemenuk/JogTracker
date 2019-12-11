@@ -1,0 +1,14 @@
+.jogsItem {
+    display: flex;
+}
+.jogsItem-info {
+    list-style-type: none;
+    margin-left: 46px;
+    padding: 0;
+}
+.jogsItem-info__item {
+    margin: 6px 0;
+}
+.jogsItem-info__item_narrow-margin {
+    margin: 3px 0;
+}
