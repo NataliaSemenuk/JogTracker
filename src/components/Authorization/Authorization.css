@@ -1,0 +1,27 @@
+.authorizationBox {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    position: relative;
+    width: 503px;
+    height: 379px;
+    border-radius: 44px;
+    background-color: #e990f9;
+  }
+  .authorizationBox__img {
+    align-self: center;
+    position: absolute;
+    top: 77px;
+  }
+  .authorizationBox__btn {
+    align-self: center;
+    background-color: #e990f9;
+    border-radius: 36px;
+    border: solid 3px #ffffff;
+    color: white;
+    width: 151px;
+    height: 60px;
+    position: absolute;
+    bottom: 36px;
+    outline: none;
+  }
