@@ -1,14 +1,15 @@
-@import url('../../fonts/fonts.css');
 .infoPage-content-wrapper {
     display: flex;
     justify-content: center;
-
+    font-family: Geneva, Arial, Helvetica, sans-serif;
+}
+.infoPage-content {
+    margin: 85px 10px 0 10px;
 }
 .infoPage-content__title {
     color: #7ed321;
     max-width: 89px;
     min-height: 43px;
-    font-family: SFUIText;
     font-size: 36px;
     font-weight: bold;
     font-stretch: normal;
@@ -17,11 +18,11 @@
     letter-spacing: normal;
     text-align: center;
     text-transform: uppercase;
+    margin: 0;
 }
 .infoPage-content__desc {
     max-width: 614px;
     min-height: 191px;
-    font-family: SFUIText;
     font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
