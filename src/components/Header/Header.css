@@ -22,7 +22,7 @@
 .header-navbar__item {
     color: white;
     height: 16px;
-    font-family: SFUIText;
+    font-family: Geneva, Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: bold;
     font-stretch: normal;
@@ -32,10 +32,18 @@
     margin: 8px;
     text-align: center;
 }
-.filter_active {
-    width: 39px;
-    height: 39px;
+.btn-filter_active {
+    width: 35px;
+    height: 35px;
     margin-right: 39px;
     object-fit: contain;
 }
-  
+.btn-filter {
+    width: 30px;
+    height: 30px;
+    margin-right: 39px;
+    object-fit: contain;
+}  
+.hide {
+    display: none;
+}
