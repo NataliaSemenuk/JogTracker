@@ -1,0 +1,8 @@
+.jogsPage {
+    position: relative;
+}
+.jogsPage__btn-add {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+}
