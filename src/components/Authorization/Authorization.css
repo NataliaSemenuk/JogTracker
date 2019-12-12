@@ -19,9 +19,21 @@
     border-radius: 36px;
     border: solid 3px #ffffff;
     color: white;
+    font-family: Geneva, Arial, Helvetica, sans-serif;
     width: 151px;
     height: 60px;
     position: absolute;
     bottom: 36px;
     outline: none;
+  } 
+
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+.authorizationBox {
+    background-color: white;
   }
+  .authorizationBox__btn {
+    background-color: #ffffff;
+    border: solid 3px #e990f9;
+    color: #e990f9;
+  } 
+}
