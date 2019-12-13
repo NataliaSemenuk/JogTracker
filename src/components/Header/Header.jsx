@@ -4,29 +4,42 @@ import logo from '../../images/logo.svg';
 import filterActive from '../../images/filter-active.svg';
 import filter from '../../images/filter.svg';
 import FilterPanel from '../FilterPanel/FilterPanel';
+import menuIcon from '../../images/menu/menu.png';
+import ModalNavbar from '../ModalNavbar/ModalNavbar'
+
 
 class Header extends Component {
     state = {
-        showFilter: false,
+        isFilterOpen: false,
+        isMenuOpen: false,
         iconFilter: filter,
         classBtnFilter: 'btn-filter', 
-        classFilterPanel: 'hide',
     }
-    onShowHideFilter = () => {
-        const {showFilter} = this.state;
-        if(showFilter) {
+    toggleFilter = () => {
+        const {isFilterOpen} = this.state;
+        if(isFilterOpen) {
             this.setState({
-                showFilter: false,
+                isFilterOpen: false,
                 iconFilter: filter,
                 classBtnFilter: 'btn-filter',
-                classFilterPanel: 'hide',
             });
         } else {
             this.setState({
-                showFilter: true,
+                isFilterOpen: true,
                 iconFilter: filterActive,
                 classBtnFilter: 'btn-filter_active',
-                classFilterPanel: 'show',
+            });
+        }
+    }
+    toggleMenu = () => {
+        const {isMenuOpen} = this.state;
+        if(isMenuOpen) {
+            this.setState({
+                isMenuOpen: false,
+            });
+        } else {
+            this.setState({
+                isMenuOpen: true,
             });
         }
     }
@@ -38,19 +51,28 @@ class Header extends Component {
                     <div>
                         <img src={logo} className='logo'/>
                     </div>
-                    
-                    <nav>
-                        <ul className = 'header-navbar'>
-                            <li className = 'header-navbar__item'>jogs</li>
-                            <li className = 'header-navbar__item'>info</li>
-                            <li className = 'header-navbar__item'>contact us</li>
-                        </ul>
-                    </nav>
-                    <div onClick={this.onShowHideFilter}>
-                        <img src={iconFilter} className={classBtnFilter}></img>
+                    <div className='headerOptions'>
+                        <nav>
+                            <ul className = 'navbar'>
+                                <li className = 'navbar__item'>jogs</li>
+                                <li className = 'navbar__item'>info</li>
+                                <li className = 'navbar__item'>contact us</li>
+                            </ul>
+                        </nav>
+                        <div className='toggleFilter' onClick={this.toggleFilter}>
+                            <img src={iconFilter} className={classBtnFilter}></img>
+                        </div>
+                        <div className='toggleMenu' onClick={this.toggleMenu}>
+                            <img src={menuIcon} />
+                        </div>
                     </div>
                 </header>
-                <FilterPanel classFilterPanel={classFilterPanel}/>
+                { this.state.isMenuOpen && 
+                    <ModalNavbar />
+                }
+                { this.state.isFilterOpen && 
+                    <FilterPanel classFilterPanel={classFilterPanel}/>
+                }
             </Fragment>
         );
     }
