@@ -1,0 +1,19 @@
+.emptyIndicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0;
+
+}
+.emptyIndicator__img {
+    margin-bottom: 50px;
+}
+.emptyIndicator__label {
+    align-self: center;
+    color: #b0b0b0;
+    font-family: Geneva, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    line-height: 1.21;
+    text-align: center;
+  }
