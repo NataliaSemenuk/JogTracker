@@ -6,8 +6,10 @@ import Authorization from '../../components/Authorization/Authorization';
 const HomePage = () => {
     return (
         <div className = 'homePage'>
-            <Header/>
-            <Authorization/>
+            <Header isHidenOption={true}/>
+            <div className='authorizationBox-wrapper'>
+                <Authorization/>
+            </div>
         </div>
     );
 }

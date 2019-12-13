@@ -1,0 +1,12 @@
+.homePage {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.authorizationBox-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 20px;
+}
