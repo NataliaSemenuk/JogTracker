@@ -1,15 +1,10 @@
-.modalPage {
-    position: absolute;
+.authenticationPage {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.267);
-    width: 100vw;
-    height: 100vh;
-    top: 0;
+    justify-content: center;
 }
-.modal {
-    /* position: absolute; */
+.authentication {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -19,36 +14,33 @@
     height: 379px;
     border-radius: 44px;
     background-color: #7ed321;
-    /* padding: 100px 90px 0 100px; */
     font-family: Geneva, Arial, Helvetica, sans-serif;
-     /* top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
+    margin-top: 120px;
 }
-.modalForm {
+.authenticationBlock {
     display: flex;
     justify-content: space-around;
     width: 100%;
     margin-bottom: 25px
 }
-.modalForm__label {
+.authentication__label {
     font-size: 16px;
     text-transform: capitalize;
 }
-.modalForm__input {
+.authentication__input {
     width: 235px;
     height: 30px;
     border-radius: 7px;
     border: solid 1px #979797;
     background-color: #ffffff;
 }
-.modal__btnClose {
+.authentication__btnClose {
     position: absolute;
     cursor: pointer;
     right: 20px;
     top: 20px;
 }
-.modal__btnSave {
+.authentication__btnSave {
     width: 320px;
     height: 42px;
     border-radius: 25.2px;
