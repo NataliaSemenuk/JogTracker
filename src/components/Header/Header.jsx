@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react';
+import {Link} from 'react-router-dom';
 import './Header.css';
 import logo from '../../images/logo.svg';
 import filterActive from '../../images/filter-active.svg';
@@ -44,28 +45,37 @@ class Header extends Component {
         }
     }
     render() {
+        const {isHidenOption} = this.props;
         const {iconFilter, classBtnFilter, classFilterPanel} = this.state;
         return (
-            <Fragment>
+            <div>
                 <header className = 'header'>
                     <div>
                         <img src={logo} className='logo'/>
                     </div>
-                    <div className='headerOptions'>
-                        <nav>
-                            <ul className = 'navbar'>
-                                <li className = 'navbar__item'>jogs</li>
-                                <li className = 'navbar__item'>info</li>
-                                <li className = 'navbar__item'>contact us</li>
-                            </ul>
-                        </nav>
-                        <div className='toggleFilter' onClick={this.toggleFilter}>
-                            <img src={iconFilter} className={classBtnFilter}></img>
+                    { !isHidenOption &&
+                        <div className='headerOptions'>
+                            <nav>
+                                <ul className = 'navbar'>
+                                    <li className = 'navbar__item'>
+                                        <Link to='/jogs'>jogs</Link>
+                                    </li>
+                                    <li className = 'navbar__item'>
+                                        <Link to='/info'>info</Link>
+                                    </li>
+                                    <li className = 'navbar__item'>
+                                        <Link to='/'>contact us</Link>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div className='toggleFilter' onClick={this.toggleFilter}>
+                                <img src={iconFilter} className={classBtnFilter}></img>
+                            </div>
+                            <div className='toggleMenu' onClick={this.toggleMenu}>
+                                <img src={menuIcon} />
+                            </div>
                         </div>
-                        <div className='toggleMenu' onClick={this.toggleMenu}>
-                            <img src={menuIcon} />
-                        </div>
-                    </div>
+                    }
                 </header>
                 { this.state.isMenuOpen && 
                     <ModalNavbar />
@@ -73,7 +83,7 @@ class Header extends Component {
                 { this.state.isFilterOpen && 
                     <FilterPanel classFilterPanel={classFilterPanel}/>
                 }
-            </Fragment>
+            </div>
         );
     }
 }
