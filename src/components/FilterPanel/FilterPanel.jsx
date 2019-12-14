@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import './FilterPanel.css';
 import DatePicker from 'react-date-picker';
 
@@ -45,12 +44,4 @@ class FilterPanel extends Component {
         );   
     }
 }
-const mapStateToProps = ({jogs}) => {
-    return {
-        jogs,
-    }
-}
-const mapDispatchToProps = () => {
-
-}
-export default connect(mapStateToProps, mapDispatchToProps)(FilterPanel);
+export default FilterPanel;
