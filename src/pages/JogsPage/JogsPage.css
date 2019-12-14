@@ -1,7 +1,6 @@
 .jogsPage {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 100%;
     font-family: Geneva, Arial, Helvetica, sans-serif;
 }
@@ -9,20 +8,28 @@
     background-color: white;
     cursor: pointer;
     outline: none;
+    display: flex;
+    align-items: center;
 }
 .jogsPage__btnAdd_circle {
-    display: flex;
-    justify-content: flex-end;
     border: none;
-    margin: 0 40px 40px 0;
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
 }
 .jogsPage__btnAdd_long {
+    position: absolute;
+    left: 50%;
+    bottom: -150px;
+    transform: translate(-50%, 0);
+    justify-content: center;
     width: 249px;
     height: 60px;
     border-radius: 36px;
     border: solid 3px #e990f9;
+}
+.jogsPage__btnAdd_long a {
     color: #e990f9;
     font-size: 18px;
     font-weight: bold;
-    margin: auto;
-  }
+}

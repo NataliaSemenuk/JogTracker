@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import './JogsPage.css';
 import Header from '../../components/Header/Header';
 import EmptyIndicator from '../../components/EmptyIndicator/EmptyIndicator';
 import JogsList from '../../components/JogsList/JogsList';
 import addIcon from '../../images/add.svg';
-import Modal from '../../components/Modal/Modal';
 
 class JogsPage extends Component {
-    state = {
-        isModelOpen: false,
-    }
-    toggleModal = () => {
-        this.setState((state) => ({
-            isModelOpen: !state.isModelOpen,
-        }));
-    }
+
     render() {
         const {jogs} = this.props;
         const view = jogs.length ? <JogsList/> : <EmptyIndicator />;
@@ -25,13 +18,11 @@ class JogsPage extends Component {
         return (
             <div className='jogsPage'>
                 <Header/>
-                {view}
-                <button onClick={this.toggleModal} className={fullClassBtnAdd}>    
-                    {valueBtnAdd}
-                </button>
-                {this.state.isModelOpen && 
-                    <Modal onClose={this.toggleModal}/>
-                }
+                {view} 
+                <div className={fullClassBtnAdd}>    
+                    <Link to='/authentication'>{valueBtnAdd}</Link>
+                </div>
+
             </div>
         );
     }
