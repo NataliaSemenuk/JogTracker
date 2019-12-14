@@ -1,19 +1,56 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import './FilterPanel.css';
+import DatePicker from 'react-date-picker';
 
-const FilterPanel = ({classFilterPanel}) => {
-    const classNameFilterPanel = 'filterPanel ' + classFilterPanel;
-    return (
-        <div className={classNameFilterPanel}>
-            <div className='filterPanel-form'>
-                <label className='filterPanel-form__label'>Date from</label>
-                <input type='date' className='filterPanel-form__input'></input>
+class FilterPanel extends Component {
+    state = {
+        dateTo: '',
+        dateFrom: '',
+    }
+    onChangeDateTo = (dateTo) => this.setState({ dateTo });
+    onChangeDateFrom = (dateFrom) => this.setState({ dateFrom });
+    render() {
+        return (
+            <div className='filterPanel'>
+                <div className='dateForm'>
+                    <time className='dateForm__label'>Date from</time>
+                    <DatePicker 
+                        onChange={this.onChangeDateTo}
+                        value={this.state.dateTo}
+                        maxDate={this.state.dateFrom}
+                        calendarIcon={null}
+                        clearIcon={null}
+                        dayPlaceholder=''
+                        monthPlaceholder=''
+                        yearPlaceholder=''
+                        className='dateForm__input'
+                    />
+                </div>
+                <div className='dateForm'>
+                    <time className='dateForm__label'>Date to</time>
+                    <DatePicker 
+                        onChange={this.onChangeDateFrom}
+                        value={this.state.dateFrom}
+                        minDate={this.state.dateTo}
+                        calendarIcon={null}
+                        clearIcon={null}
+                        dayPlaceholder=''
+                        monthPlaceholder=''
+                        yearPlaceholder=''
+                        className='dateForm__input'
+                    />
+                </div>
             </div>
-            <div className='filterPanel-form'>
-                <label className='filterPanel-form__label'>Data to</label>
-                <input type='date' className='filterPanel-form__input'></input>
-            </div>
-        </div>
-    );
+        );   
+    }
 }
-export default FilterPanel;
+const mapStateToProps = ({jogs}) => {
+    return {
+        jogs,
+    }
+}
+const mapDispatchToProps = () => {
+
+}
+export default connect(mapStateToProps, mapDispatchToProps)(FilterPanel);

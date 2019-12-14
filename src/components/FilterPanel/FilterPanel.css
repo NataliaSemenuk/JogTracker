@@ -7,21 +7,24 @@
     font-family: Geneva, Arial, Helvetica, sans-serif;
     background-color: #eaeaea;
 }
-.filterPanel-form {
+.dateForm {
     margin-right: 45px;
 }
-.filterPanel-form__input {
+.dateForm__input {
+    cursor: pointer;
     min-width: 100px;
-    height: 20px;
     margin-left: 15px;
     padding: 5px;
     border-radius: 11px;
     border: solid 1px #979797;
     background-color: #ffffff;
 }
-.show {
-    display: flex;
+.dateForm__input>div {
+    border: none;
 }
-.hide {
-    display: none;
+.dateForm__input>div>div {
+    justify-content: center;
+}
+.dateForm__input>div>div>span {
+    color: white;
 }
