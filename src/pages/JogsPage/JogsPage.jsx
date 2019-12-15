@@ -13,23 +13,34 @@ import { bindActionCreators } from 'redux';
 
 class JogsPage extends Component {
     state = {
-        dateTo: '',
-        dateFrom: '',
+        dateFrom: {},
+        dateTo: {},
+        isFiltered: false,
     }
-    onChangeDateTo = (dateTo) => {
-        this.setState({ dateTo }) 
+
+    onChangeDateTo = (date) => {
+        this.setState({
+            dateTo: date, 
+            isFiltered: true,
+        }) 
     };
-    onJogsFilter = (currentUserId, jogsList) => {
-        const jogsCurrentUser = [];
-        jogsList.map((item) => {
-            if(currentUserId == item.user_id) {
-                jogsCurrentUser.push(item);
+    onChangeDateFrom = (date) => {
+        this.setState({
+            dateFrom: date, 
+            isFiltered: true,
+        });
+    };
+    // onJogsFilter = (currentUserId, jogsList) => {
+    //     const jogsCurrentUser = [];
+    //     jogsList.map((item) => {
+    //         if(currentUserId == item.user_id) {
+    //             jogsCurrentUser.push(item);
                 
-            }
-        })
-        this.props.loadJogs(jogsCurrentUser);
-        console.log(this.props.jogs);
-    }
+    //         }
+    //     })
+    //     this.props.loadJogs(jogsCurrentUser);
+    //     console.log(this.props.jogs);
+    // }
     async componentDidMount() {
         const apiService = new ApiService();
         const token = JSON.parse(localStorage.getItem('token'));
@@ -43,19 +54,18 @@ class JogsPage extends Component {
             console.log(error);
         } 
     } 
-    onChangeDateFrom = (dateFrom) => this.setState({ dateFrom });
     render() {
         const {jogs} = this.props;
-        const {dateTo, dateFrom} = this.state;
-        const view =  jogs.length ? <JogsList dateTo={this.state.dateTo} dateFrom={this.state.dateFrom}/> : <EmptyIndicator />;
+        const {dateTo, dateFrom, isFiltered} = this.state;
+        const view =  jogs.length ? <JogsList dateTo={dateTo} dateFrom={dateFrom} isFiltered = {isFiltered}/> : <EmptyIndicator />;
         const classBtnAdd = jogs.length ? 'jogsPage__btnAdd_circle' : 'jogsPage__btnAdd_long';
         const fullClassBtnAdd = classBtnAdd + ' jogsPage__btnAdd';
-        const valueBtnAdd = jogs.length ? <img src={addIcon}/> :  'Create your jog first';
+        const valueBtnAdd = jogs.length ? <img src={addIcon} alt='Add'/> :  'Create your jog first';
         const providerProps = {
             onChangeDateTo: this.onChangeDateTo,
             onChangeDateFrom: this.onChangeDateFrom,
             dateTo, 
-            dateFrom
+            dateFrom,
         };
         return (
             <DateProvider value={providerProps}>

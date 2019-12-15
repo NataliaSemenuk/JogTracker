@@ -1,6 +1,6 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import './JogsItem.css';
-import icon from '../../images/icon.svg';
+import profileIcon from '../../images/icon.svg';
 
 const JogsItem = ({item}) => {
     const speed = (item.distance / item.time).toFixed(2);
@@ -11,7 +11,7 @@ const JogsItem = ({item}) => {
     return (
         <div className = 'jogsItem'>
             <div className='jogsItem__img'>
-                <img src={icon}/>
+                <img src={profileIcon} alt='Profile Icon'/>
             </div>
             <ul className='jogsItem-info'>
                 <li className='jogsItem-info__item jogsItem-info__item_narrow-margin'>{date}.{month}.{year}</li>
