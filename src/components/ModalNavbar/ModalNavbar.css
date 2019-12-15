@@ -31,7 +31,7 @@ a {
     text-decoration: none;
 }
 
-.modalNavbar__item, a {
+.modalNavbar__item, .modalNavbar__item a {
     color: black;
     height: 16px;
     text-transform: uppercase;
