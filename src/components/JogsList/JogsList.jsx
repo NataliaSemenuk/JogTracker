@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import JogsItem from '../JogsItem/JogsItem';
 import './JogsList.css';
 
 class JogsList extends Component {
     render() {
-        const {jogs} = this.props;
+        const {jogs, dateTo, dateFrom} = this.props;
         return (
             <ul className = 'jogsList'>
             {
@@ -16,7 +17,6 @@ class JogsList extends Component {
                 )) 
             }</ul>
         );
-
     }
 }
 const mapStateToProps = ({jogs}) => {

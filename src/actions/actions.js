@@ -1,4 +1,8 @@
-const jogsLoaded = (newJog) => ({
-    type: 'JOGS_LOADED',
-    payload: newJog,
-}); 
+const loadJogs = (jogs) => ({
+    type: 'LOAD_JOGS',
+    payload: jogs,
+});
+
+export {
+    loadJogs,
+}
