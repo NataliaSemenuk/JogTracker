@@ -4,10 +4,12 @@ import bearFacePurpleImage from '../../images/bearFacePurple/bearFace.png';
 import './Authorization.css';
 import ApiService from '../../apiService/ApiService';
 import { connect } from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 class Authorization extends Component {
     state = {
         bearImage: bearFaceWhiteImage,
+        isRedirect: false,
     }
     updateDimensions = () => {
         const widthWindow = 480;
@@ -28,24 +30,30 @@ class Authorization extends Component {
     componentWillUnmount() {
         window.removeEventListener("resize", this.updateDimensions);
     };
-
     authorize = async () => {
         const apiService = new ApiService();
         const {response:{access_token}} = await apiService.getToken();
-        console.log(access_token);
+        this.setState({
+            isRedirect: true,
+        })
         localStorage.setItem('token', JSON.stringify(access_token));
+        
     }
 
     render() {
-        const {bearImage} = this.state;
-        return (
-            <div className = 'authorizationBox'>
-                <div className='authorizationBox__img'>
-                    <img src={bearImage}/>
+        const {bearImage, isRedirect} = this.state;
+        if(isRedirect) {
+            return <Redirect to = '/jogs'/>
+        } else { 
+            return (
+                <div className = 'authorizationBox'>
+                    <div className='authorizationBox__img'>
+                        <img src={bearImage}/>
+                    </div>
+                    <button className='authorizationBox__btn' onClick={this.authorize}>Let me in</button>
                 </div>
-                <button className='authorizationBox__btn' onClick={this.authorize}>Let me in</button>
-            </div>
-        );
+            );
+        }
     }
 }
 
