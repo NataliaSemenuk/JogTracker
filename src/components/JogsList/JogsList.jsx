@@ -6,9 +6,9 @@ import './JogsList.css';
 class JogsList extends Component {
     render() {
         const {jogs, dateTo, dateFrom, isFiltered} = this.props;
-        const dateToNumber = Number(dateTo.valueOf());
-        const dateFromNumber = Number(dateFrom.valueOf());
-        const itemList = (item) => (<li key = {item.id}>
+        const dateToNumber = dateTo ? Number(dateTo.valueOf()) : 0;
+        const dateFromNumber = dateFrom ? Number(dateFrom.valueOf()) : 0;
+        const itemList = (item) => (<li key = {item.id} className='jogsList__item'>
                             <JogsItem item={item}/>
                         </li>);
         const jogsList = jogs.map((item) => {
