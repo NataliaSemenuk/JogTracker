@@ -13,8 +13,8 @@ import { bindActionCreators } from 'redux';
 
 class JogsPage extends Component {
     state = {
-        dateFrom: {},
-        dateTo: {},
+        dateFrom: null,
+        dateTo: null,
         isFiltered: false,
     }
 
@@ -30,17 +30,16 @@ class JogsPage extends Component {
             isFiltered: true,
         });
     };
-    // onJogsFilter = (currentUserId, jogsList) => {
-    //     const jogsCurrentUser = [];
-    //     jogsList.map((item) => {
-    //         if(currentUserId == item.user_id) {
-    //             jogsCurrentUser.push(item);
-                
-    //         }
-    //     })
-    //     this.props.loadJogs(jogsCurrentUser);
-    //     console.log(this.props.jogs);
-    // }
+    onJogsFilter = (currentUserId, jogsList) => {
+        const jogsCurrentUser = [];
+        jogsList.map((item) => {
+            if(currentUserId == item.user_id) {
+                jogsCurrentUser.push(item); 
+            }
+        })
+        this.props.loadJogs(jogsCurrentUser);
+        console.log(this.props.jogs);
+    }
     async componentDidMount() {
         const apiService = new ApiService();
         const token = JSON.parse(localStorage.getItem('token'));
@@ -55,7 +54,7 @@ class JogsPage extends Component {
         } 
     } 
     render() {
-        const {jogs} = this.props;
+        const {jogs, currentUserId} = this.props;
         const {dateTo, dateFrom, isFiltered} = this.state;
         const view =  jogs.length ? <JogsList dateTo={dateTo} dateFrom={dateFrom} isFiltered = {isFiltered}/> : <EmptyIndicator />;
         const classBtnAdd = jogs.length ? 'jogsPage__btnAdd_circle' : 'jogsPage__btnAdd_long';
@@ -87,7 +86,7 @@ const mapStateToProps = ({jogs}) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        loadJogs
+        loadJogs,
     }, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(JogsPage);

@@ -8,15 +8,15 @@ const FilterPanel = () => {
         <DateConsumer>
         {
             ({onChangeDateTo, onChangeDateFrom, dateTo, dateFrom}) => {
-                const dateToString = Object.keys(dateTo).length ? String(dateTo) : '';
-                const dateFromString = Object.keys(dateFrom).length ? String(dateFrom) : '';
+                const dateToValue = dateTo ? dateTo : '';
+                const dateFromValue = dateFrom ? dateFrom: '';
                 return (
                     <div className='filterPanel'>
                         <div className='dateForm'>
                             <time className='dateForm__label'>Date from</time>
                             <DatePicker 
                                 onChange={onChangeDateFrom}
-                                value={dateFromString}
+                                value={dateFromValue}
                                 calendarIcon={null}
                                 clearIcon={null}
                                 dayPlaceholder=''
@@ -29,7 +29,7 @@ const FilterPanel = () => {
                             <time className='dateForm__label'>Date to</time>
                             <DatePicker 
                                 onChange={onChangeDateTo}
-                                value={dateToString}
+                                value={dateToValue}
                                 calendarIcon={null}
                                 clearIcon={null}
                                 dayPlaceholder=''
