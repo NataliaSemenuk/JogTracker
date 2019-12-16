@@ -38,6 +38,15 @@
     margin-bottom: 5px;
     margin-right: 90px;
 }
+.authentication__input>div {
+    border: none;
+}
+.authentication__input>div>div {
+    justify-content: center;
+}
+/* .authentication__input>div>div>span {
+    color: white;
+} */
 .authentication__btnClose {
     position: absolute;
     cursor: pointer;
