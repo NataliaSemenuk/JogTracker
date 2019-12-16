@@ -5,7 +5,7 @@ import Header from '../../components/Header/Header';
 const InfoPage = () => {
     return (
         <Fragment>
-            <Header/>
+            <Header isHidenFilterIcon={true}/>
             <div className='infoPage-content-wrapper'>
                 <div className='infoPage-content'>
                     <h1 className='infoPage-content__title'>info</h1>
