@@ -4,7 +4,7 @@ import profileIcon from '../../images/icon.svg';
 
 const JogsItem = ({item}) => {
     const speed = (item.distance / item.time).toFixed(2);
-    const fullDate = new Date(item.date);
+    const fullDate = new Date(item.date*1000);
     const date = fullDate.getDate();
     let month = fullDate.getMonth() + 1;
     const year = fullDate.getFullYear();
