@@ -45,16 +45,16 @@ class Header extends Component {
         }
     }
     render() {
-        const {isHidenOption} = this.props;
+        const {isHidenFilterIcon, isHidenMenuIcon} = this.props;
         const {iconFilter, classBtnFilter, classFilterPanel} = this.state;
         return (
-            <div>
+            <Fragment>
                 <header className = 'header'>
                     <div>
-                        <img src={logo} className='logo'/>
+                        <img src={logo} className='logo' alt='Logo'/>
                     </div>
-                    { !isHidenOption &&
                         <div className='headerOptions'>
+                        { !isHidenMenuIcon &&
                             <nav>
                                 <ul className = 'navbar'>
                                     <li className = 'navbar__item'>
@@ -68,14 +68,18 @@ class Header extends Component {
                                     </li>
                                 </ul>
                             </nav>
+                        }
+                        { !isHidenFilterIcon &&
                             <div className='toggleFilter' onClick={this.toggleFilter}>
-                                <img src={iconFilter} className={classBtnFilter}></img>
+                                <img src={iconFilter} className={classBtnFilter} alt='Filter Icon'></img>
                             </div>
+                        }
+                        { !isHidenMenuIcon &&
                             <div className='toggleMenu' onClick={this.toggleMenu}>
-                                <img src={menuIcon} />
+                                <img src={menuIcon} alt='Menu Icon'/>
                             </div>
+                        }
                         </div>
-                    }
                 </header>
                 { this.state.isMenuOpen && 
                     <ModalNavbar />
@@ -83,7 +87,7 @@ class Header extends Component {
                 { this.state.isFilterOpen && 
                     <FilterPanel classFilterPanel={classFilterPanel}/>
                 }
-            </div>
+            </Fragment>
         );
     }
 }
