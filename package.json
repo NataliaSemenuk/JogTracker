@@ -1,6 +1,20 @@
 {
   "name": "jog-tracker",
   "version": "0.1.0",
+  "babel": {
+    "presets": [
+        "jest", [
+            "@babel/preset-env", {
+                "debug": false,
+                "modules": "commonjs",
+                "targets": {
+                    "node": "current"
+                },
+                "useBuiltIns": false
+            }
+        ]
+    ]
+  },
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -35,5 +49,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0"
   }
 }
