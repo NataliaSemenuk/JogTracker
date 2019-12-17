@@ -72,7 +72,7 @@ class JogsPage extends Component {
                     <Header/>
                     {view} 
                     <div className={fullClassBtnAdd}>    
-                        <Link to='/authentication'>{valueBtnAdd}</Link>
+                        <Link to='/creation'>{valueBtnAdd}</Link>
                     </div>
                 </div>
             </DateProvider>

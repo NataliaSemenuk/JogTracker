@@ -15,3 +15,6 @@
 .jogsItem-info__item_narrow-margin {
     margin: 3px 0;
 }
+.jogsItem__img {
+    cursor: pointer;
+}
