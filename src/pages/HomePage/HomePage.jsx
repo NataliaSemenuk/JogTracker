@@ -6,7 +6,7 @@ import Authorization from '../../components/Authorization/Authorization';
 const HomePage = () => {
     return (
         <div className = 'homePage'>
-            <Header isHidenOption={true}/>
+            <Header isHidenFilterIcon={true} isHidenMenuIcon={true}/>
             <div className='authorizationBox-wrapper'>
                 <Authorization/>
             </div>
