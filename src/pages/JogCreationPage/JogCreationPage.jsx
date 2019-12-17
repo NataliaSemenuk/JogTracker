@@ -9,7 +9,7 @@ import {bindActionCreators} from 'redux';
 import {Redirect} from 'react-router-dom';
 import DatePicker from 'react-date-picker';
 
-class AuthenticationPage extends Component {
+class JogCreationPage extends Component {
     state = {
         date: new Date(),
         distance: null,
@@ -128,4 +128,4 @@ const mapStateToProps = ({jogs, jogToChange}) => {
         jogToChange,
     }
 }   
-export default connect(mapStateToProps, null)(AuthenticationPage);
+export default connect(mapStateToProps, null)(JogCreationPage);

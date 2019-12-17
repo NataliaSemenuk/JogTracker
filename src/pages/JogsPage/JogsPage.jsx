@@ -10,12 +10,14 @@ import { DateProvider } from '../../context/dateContext';
 import ApiService from '../../apiService/ApiService';
 import {loadJogs} from '../../actions/actions';
 import { bindActionCreators } from 'redux';
+import Spinner from '../../components/Spinner/Spinner';
 
 class JogsPage extends Component {
     state = {
         dateFrom: null,
         dateTo: null,
         isFiltered: false,
+        loading: true,
     }
 
     onChangeDateTo = (date) => {
@@ -51,12 +53,17 @@ class JogsPage extends Component {
             this.onJogsFilter(currentUserId, jogsList);
         } catch (error) {
             console.log(error);
-        } 
+        }
+        this.setState({
+            loading: false,
+        });
     } 
     render() {
         const {jogs, currentUserId} = this.props;
-        const {dateTo, dateFrom, isFiltered} = this.state;
-        const view =  jogs.length ? <JogsList dateTo={dateTo} dateFrom={dateFrom} isFiltered = {isFiltered}/> : <EmptyIndicator />;
+        const {dateTo, dateFrom, isFiltered, loading} = this.state;
+        const content =  jogs.length && !loading ? <JogsList dateTo={dateTo} dateFrom={dateFrom} isFiltered = {isFiltered}/> : null;
+        const emptyIndicator = !jogs.length && !loading ? <EmptyIndicator /> : null;
+        const spinner = loading ? <Spinner /> : null; 
         const classBtnAdd = jogs.length ? 'jogsPage__btnAdd_circle' : 'jogsPage__btnAdd_long';
         const fullClassBtnAdd = classBtnAdd + ' jogsPage__btnAdd';
         const valueBtnAdd = jogs.length ? <img src={addIcon} alt='Add'/> :  'Create your jog first';
@@ -70,10 +77,14 @@ class JogsPage extends Component {
             <DateProvider value={providerProps}>
                 <div className='jogsPage'>
                     <Header/>
-                    {view} 
-                    <div className={fullClassBtnAdd}>    
-                        <Link to='/creation'>{valueBtnAdd}</Link>
-                    </div>
+                    {spinner}
+                    {content} 
+                    {emptyIndicator}
+                    {!loading &&
+                        <div className={fullClassBtnAdd}>    
+                            <Link to='/creation'>{valueBtnAdd}</Link>
+                        </div>
+                    }
                 </div>
             </DateProvider>
         );
