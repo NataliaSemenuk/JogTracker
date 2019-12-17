@@ -29,7 +29,7 @@
     border: solid 3px #e990f9;
     margin-bottom: 30px;
 }
-.jogsPage__btnAdd_long a {
+.jogsPage__link {
     color: #e990f9;
     font-size: 18px;
     font-weight: bold;

@@ -81,9 +81,11 @@ class JogsPage extends Component {
                     {content} 
                     {emptyIndicator}
                     {!loading &&
-                        <div className={fullClassBtnAdd}>    
-                            <Link to='/creation'>{valueBtnAdd}</Link>
-                        </div>
+                        <Link to='/creation' className='jogsPage__link'>
+                            <div className={fullClassBtnAdd}>    
+                                {valueBtnAdd}
+                            </div>
+                        </Link>
                     }
                 </div>
             </DateProvider>
