@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import cancelIcon from '../../images/cancel.svg';
-import './AuthenticationPage.css';
+import './JogCreationPage.css';
 import ApiService from '../../apiService/ApiService';
-import {addJog} from '../../actions/actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Redirect} from 'react-router-dom';
@@ -26,16 +25,31 @@ class AuthenticationPage extends Component {
             time: time,
         }
     }
-     onCreateJog = async () => {
+    changeJog = () => {
         const {date, distance, time} = this.state;
+        const {jogToChange} = this.props;
+        return {
+            date: date,
+            distance: distance,
+            time: time,
+            jog_id: jogToChange.id,
+            user_id: jogToChange.user_id,
+        }
+    }
+    isEmptyJogToChange =() => (!Object.keys(this.props.jogToChange).length);
+    onAddedChange = async () => {
+        const {date, distance, time} = this.state;
+        
         if (date && distance && time) {
-            const newJog = this.createNewJog();
-            console.log('NEW', newJog);
+            const newJog = this.isEmptyJogToChange() ? this.createNewJog() : this.changeJog();
             const apiService = new ApiService();
             const token = JSON.parse(localStorage.getItem('token'));
             try {
-                const response = await apiService.postJog(token, newJog);
-                console.log('newJog', response);
+                if(this.isEmptyJogToChange()) {
+                    const response = await apiService.postJog(token, newJog);
+                } else {
+                    const response = await apiService.putJog(token, newJog);
+                }
             } catch (error) {
                 console.error(error);
             }
@@ -44,8 +58,7 @@ class AuthenticationPage extends Component {
             });
         } else {
             alert('Please, enter data');
-        }
-         
+        }     
     }
     onChangeDistance = (event) => {
         let valueDistance = event.target.value;
@@ -81,11 +94,13 @@ class AuthenticationPage extends Component {
                         </div>
                         <div className='authenticationBlock'>
                             <label className='authentication__label'>{distanceTitle}</label>
-                            <input className='authentication__input' onChange={this.onChangeDistance}/>
+                            <input className='authentication__input' 
+                            onChange={this.onChangeDistance}/>
                         </div>
                         <div className='authenticationBlock'>
                             <time className='authentication__label'>{timeTitle}</time>
-                            <input className='authentication__input' onChange={this.onChangeTime}/>
+                            <input className='authentication__input' 
+                            onChange={this.onChangeTime}/>
                         </div>
                         <div className='authenticationBlock'>
                             <data className='authentication__label'>{dateTitle}</data>
@@ -100,21 +115,17 @@ class AuthenticationPage extends Component {
                                 className='authentication__input'
                             />
                         </div>
-                        <input className='authentication__btnSave' type='button' value='save' onClick={this.onCreateJog}></input>
+                        <input className='authentication__btnSave' type='button' value='save' onClick={this.onAddedChange}></input>
                     </div>
                 </div>
             );
         }    
     }    
 }
-const mapStateToProps = ({jogs}) => {
+const mapStateToProps = ({jogs, jogToChange}) => {
     return {
         jogs,
+        jogToChange,
     }
-}
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({
-        addJog
-    }, dispatch);
-}
-export default connect(mapStateToProps, mapDispatchToProps)(AuthenticationPage);
+}   
+export default connect(mapStateToProps, null)(AuthenticationPage);

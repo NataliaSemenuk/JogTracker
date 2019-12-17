@@ -44,9 +44,6 @@
 .authentication__input>div>div {
     justify-content: center;
 }
-/* .authentication__input>div>div>span {
-    color: white;
-} */
 .authentication__btnClose {
     position: absolute;
     cursor: pointer;
