@@ -7,9 +7,7 @@ import {changeJog} from '../../actions/actions';
 import { bindActionCreators } from 'redux';
 
 class JogsItem extends Component {
-    state = {
-        isOpenToChange: false,
-    }
+    
     onClickProfile = () => {
         const {item} =this.props;
         this.props.changeJog(item);
@@ -19,7 +17,6 @@ class JogsItem extends Component {
     }
     render() {
         const {item} =this.props;
-        const {isOpenToChange} =this.state;
         const speed = (item.distance / item.time).toFixed(2);
         const fullDate = new Date(item.date*1000);
         const date = fullDate.getDate();

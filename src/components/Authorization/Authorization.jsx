@@ -3,7 +3,6 @@ import bearFaceWhiteImage from '../../images/bearFaceWhite/bear-face.png';
 import bearFacePurpleImage from '../../images/bearFacePurple/bearFace.png';
 import './Authorization.css';
 import ApiService from '../../apiService/ApiService';
-import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
 class Authorization extends Component {
@@ -37,6 +36,7 @@ class Authorization extends Component {
             isRedirect: true,
         })
         localStorage.setItem('token', JSON.stringify(access_token));
+        return access_token;
         
     }
 
@@ -48,7 +48,7 @@ class Authorization extends Component {
             return (
                 <div className = 'authorizationBox'>
                     <div className='authorizationBox__img'>
-                        <img src={bearImage}/>
+                        <img src={bearImage} alt='Bear'/>
                     </div>
                     <button className='authorizationBox__btn' onClick={this.authorize}>Let me in</button>
                 </div>

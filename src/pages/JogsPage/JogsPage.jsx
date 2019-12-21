@@ -40,7 +40,6 @@ class JogsPage extends Component {
             }
         })
         this.props.loadJogs(jogsCurrentUser);
-        console.log(this.props.jogs);
     }
     async componentDidMount() {
         const apiService = new ApiService();
@@ -52,14 +51,14 @@ class JogsPage extends Component {
             const jogsList = jogs.response.jogs;
             this.onJogsFilter(currentUserId, jogsList);
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
         this.setState({
             loading: false,
         });
     } 
     render() {
-        const {jogs, currentUserId} = this.props;
+        const {jogs} = this.props;
         const {dateTo, dateFrom, isFiltered, loading} = this.state;
         const content =  jogs.length && !loading ? <JogsList dateTo={dateTo} dateFrom={dateFrom} isFiltered = {isFiltered}/> : null;
         const emptyIndicator = !jogs.length && !loading ? <EmptyIndicator /> : null;

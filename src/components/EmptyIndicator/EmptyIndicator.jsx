@@ -6,7 +6,7 @@ const EmptyIndicator = () => {
     return (
         <div className = 'emptyIndicator'>
             <div className='emptyIndicator__img'>
-                <img src={icon}/>
+                <img src={icon} alt= 'Empty'/>
             </div>
             <span className='emptyIndicator__label'>Nothing is there</span>
         </div>

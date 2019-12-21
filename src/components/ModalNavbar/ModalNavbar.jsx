@@ -1,5 +1,4 @@
 import React, { Fragment, Component } from 'react';
-import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
 import './ModalNavbar.css';
 import logo from '../../images/logo-green/logo@3x.png';
@@ -30,10 +29,10 @@ class ModalNavbar extends Component {
                 <div className='modalMenu'>
                     <div className='modalMenuHeader'>
                         <div>   
-                            <img src={logo} className='logo'/>
+                            <img src={logo} className='logo' alt='Logo'/>
                         </div>
                         <div className='toggleModalNavbar' onClick={this.toggleMenu}>
-                            <img src={cancelIcon} ></img>
+                            <img src={cancelIcon}  alt='Cancel Icon'></img>
                         </div>
                     </div>
                     <nav>

@@ -5,7 +5,6 @@ import cancelIcon from '../../images/cancel.svg';
 import './JogCreationPage.css';
 import ApiService from '../../apiService/ApiService';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import {Redirect} from 'react-router-dom';
 import DatePicker from 'react-date-picker';
 
@@ -18,7 +17,6 @@ class JogCreationPage extends Component {
     }
     createNewJog = () => {
         const {date, distance, time} = this.state;
-        const {jogs} = this.props;
         return {
             date: date,
             distance: distance,
@@ -46,9 +44,9 @@ class JogCreationPage extends Component {
             const token = JSON.parse(localStorage.getItem('token'));
             try {
                 if(this.isEmptyJogToChange()) {
-                    const response = await apiService.postJog(token, newJog);
+                    await apiService.postJog(token, newJog);
                 } else {
-                    const response = await apiService.putJog(token, newJog);
+                    await apiService.putJog(token, newJog);
                 }
             } catch (error) {
                 console.error(error);
